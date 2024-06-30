@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TeamManagement/bin
+/.vs
+/TeamManagement/obj/Release/net8.0/win-x64
+/TeamManagement/obj
