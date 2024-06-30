@@ -1,0 +1,84 @@
+﻿@using TeamManagement.Models
+
+<style>
+    table, th, td{
+        border: 1px solid black;
+    }
+</style>
+
+<a href='@Url.Action( "Logout",  "Account")'>
+    <input type='button' value='Logout' />
+</a>
+
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Teams</h1>
+    @if (Model.IsAdmin)
+    {
+        <a href='@Url.Action( "CreateNew",  "Home")'>
+            <input type='button' value='Create New' />
+
+        </a>
+    }
+    <br/>
+    <br />
+    <table id="teamsTable" style="margin: 0px auto;">
+        <thead>
+            <tr>
+                <th>
+                    Team Name
+                </th>
+                <th>
+                    Team Id
+                </th>
+                <td/>
+                @if (Model.IsAdmin || Model.IsManager)
+                {
+                    <td />
+                }
+                
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i=0; i < Model.Teams.Count; i++)
+            {
+                Team team = Model.Teams[i];
+                <tr id="@team.TeamId">
+                    <td>
+                        @team.Name
+                    </td>
+                    <td>
+                        @team.TeamId
+                    </td>
+
+
+                    @if(Model.IsAdmin || Model.IsManager)
+                    {
+                        <td>
+                            <a href="/Home/EditViewTeams?teamId=@team.TeamId">
+                              <input type='button' value='Edit' />  
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                <input type='button' value='Remove' onclick="removeTeam(@team.TeamId, @i+1)" />
+                            </a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a href="/Home/EditViewTeams?teamId=@team.TeamId">
+                                <input type='button' value='View' />
+                            </a>
+                        </td>
+                    }
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

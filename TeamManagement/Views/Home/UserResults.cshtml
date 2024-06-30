@@ -1,0 +1,48 @@
+﻿@model FindUsersViewModel
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<div id="userResults">
+    @if (this.Model.UserResults !=null)
+    {
+        @if (this.Model.UserResults.Count > 0)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>LastName</th>
+                        <th>FirstName</th>
+                        <th>Email</th>
+                        <th>UserName</th>
+                        <th>UserId</th>
+                        <th>Member Type</th>
+                        <th>Add to Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i=0; i <this.Model.UserResults.Count; i++)
+                    {
+                        UserResult _result = this.Model.UserResults[i];
+                        <tr>
+                            <td>@_result.LastName</td>
+                            <td>@_result.FirstName</td>
+                            <td>@_result.Email</td>
+                            <td>@_result.UserName</td>
+                            <td>@_result.UserId</td>
+                            <td>@_result.MemberType</td>
+                            <td><input id="@_result.UserId" name="userresult" type="checkbox" onchange="onCheckboxCheckChanged(this)" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No Matching results</p>
+        }
+    }
+</div>

@@ -1,0 +1,31 @@
+﻿@model CreateNewTeamViewModel
+
+<div>
+    <p><strong>Add New Team</strong></p>
+    <label>Team Name</label>
+    @Html.TextBoxFor(m => m.TeamName, this.Model.TeamName)
+
+    <br />
+    <br />
+    <label>Search users:</label>
+    <input id="searchtextbox" name="SearchText" placeholder="Search for members/users" type="text" maxlength="50" />
+    <input type="button" id="searchbtn" value="Search" onclick="searchResults()" />
+
+    <div id="errorView" style="color:red" class="text-danger field-validation-error">
+
+    </div>
+
+    <br/>
+    <br />
+
+    @Html.Partial("UserResults", this.Model.FindUsers)
+    <br />
+    <br />
+     <input type="button" value="Add Team" onclick="addTeam()" />
+     <input type="button" value="Cancel" onclick="cancel()" />
+</div>
+
+@this.Html.Hidden("selectedUserIds")
+
+    
+

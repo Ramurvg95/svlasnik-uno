@@ -1,0 +1,55 @@
+﻿@using TeamManagement.Models
+@model LoginViewModel
+
+@using (Html.BeginForm(actionName: "Login", controllerName:"Account", FormMethod.Post))
+{
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    UserName:
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.UserName, this.Model.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td />
+                <td>
+                    @Html.ValidationMessageFor(m => m.UserName, message:"", new { @class = "text-danger", @style = "color:red"})
+                </td>
+            </tr>
+            <tr>
+                <td />
+
+                <td />
+            </tr>
+            <tr>
+                <td>
+                    Password:
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.Password, this.Model.Password)
+                </td>
+            </tr>
+            <tr>
+                <td />
+                <td>
+                    @Html.ValidationMessageFor(m => m.Password, message:"", new { @class = "text-danger", @style = "color.red"})
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        @Html.ValidationSummary( excludePropertyErrors: true, message:"", new { @class = "text-danger", @style = "color.red"})
+    </div>
+    <div>
+        <button stylr="margin: 0px auto;" type="submit">Login</button>
+    </div>
+}

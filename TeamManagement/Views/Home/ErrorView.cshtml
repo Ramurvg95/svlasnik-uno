@@ -1,0 +1,9 @@
+﻿@model ErrorViewModel
+@if (!string.IsNullOrEmpty(this.Model.TeamNameErrorMessage))
+{
+    <p>@this.Model.TeamNameErrorMessage</p>
+}
+else if (!string.IsNullOrEmpty(this.Model.TeamUsersErroMessage))
+{
+    <p>@this.Model.TeamUsersErroMessage</p>
+}
